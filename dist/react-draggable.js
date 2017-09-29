@@ -930,13 +930,14 @@ var DraggableCore = function (_React$Component) {
       // this element. We use different events depending on whether or not we have detected that this
       // is a touch-capable device.
       (0, _domFns.addEvent)(ownerDocument, dragEventFor.move, _this.handleDrag);
+      (0, _domFns.addEvent)(ownerDocument, dragEventFor.stop, _this.handleDragStop);
       if ((0, _is.isIEBased)()) {
         // cross-origin
         try {
           // to fix when using iframe on IE11/edge, it gets sticky click
           (0, _domFns.addEvent)(ownerDocument.defaultView.top, dragEventFor.stop, _this.handleDragStop);
         } catch (e) {
-          (0, _domFns.addEvent)(ownerDocument, dragEventFor.stop, _this.handleDragStop);
+          //
         }
       } else {
         (0, _domFns.addEvent)(ownerDocument, dragEventFor.stop, _this.handleDragStop);
@@ -1026,11 +1027,12 @@ var DraggableCore = function (_React$Component) {
         // Remove event handlers
         (0, _log2.default)('DraggableCore: Removing handlers');
         (0, _domFns.removeEvent)(thisNode.ownerDocument, dragEventFor.move, _this.handleDrag);
+        (0, _domFns.removeEvent)(thisNode.ownerDocument, dragEventFor.stop, _this.handleDragStop);
         if ((0, _is.isIEBased)()) {
           try {
             (0, _domFns.removeEvent)(thisNode.ownerDocument.defaultView.top, dragEventFor.stop, _this.handleDragStop);
           } catch (e) {
-            (0, _domFns.removeEvent)(thisNode.ownerDocument, dragEventFor.stop, _this.handleDragStop);
+            //
           }
         } else {
           (0, _domFns.removeEvent)(thisNode.ownerDocument, dragEventFor.stop, _this.handleDragStop);
@@ -1068,14 +1070,13 @@ var DraggableCore = function (_React$Component) {
 
         (0, _domFns.removeEvent)(ownerDocument, eventsFor.mouse.move, this.handleDrag);
         (0, _domFns.removeEvent)(ownerDocument, eventsFor.touch.move, this.handleDrag);
+        (0, _domFns.removeEvent)(ownerDocument, eventsFor.mouse.stop, this.handleDragStop);
         if ((0, _is.isIEBased)()) {
           try {
             (0, _domFns.removeEvent)(ownerDocument.defaultView.top, eventsFor.mouse.stop, this.handleDragStop);
           } catch (e) {
-            (0, _domFns.removeEvent)(ownerDocument, eventsFor.mouse.stop, this.handleDragStop);
+            //
           }
-        } else {
-          (0, _domFns.removeEvent)(ownerDocument, eventsFor.mouse.stop, this.handleDragStop);
         }
         (0, _domFns.removeEvent)(ownerDocument, eventsFor.touch.stop, this.handleDragStop);
         if (this.props.enableUserSelectHack) (0, _domFns.removeUserSelectStyles)(ownerDocument);
