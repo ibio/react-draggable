@@ -2656,7 +2656,7 @@ exports.isIEBased = isIEBased;
 
 /*eslint no-console:0*/
 function isIEBased() /*: boolean*/ {
-	return isIE() && isEdge();
+	return isIE() || isEdge();
 }
 
 function isIE() /*: boolean*/ {
