@@ -2660,12 +2660,12 @@ function isIEBased() /*: boolean*/ {
 }
 
 function isIE() /*: boolean*/ {
-	var match = window.navigator.userAgent.match(/(?:msie |trident.+?; rv:)(\d+)/);
+	var match = window.navigator.userAgent.match(/(?:msie |trident.+?; rv:)(\d+)/gi);
 	return match !== null;
 }
 
 function isEdge() /*: boolean*/ {
-	var match = window.navigator.userAgent.match(/edge\/(\d+)/);
+	var match = window.navigator.userAgent.match(/edge\/(\d+)/gi);
 	return match !== null;
 }
 
