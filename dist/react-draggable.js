@@ -939,8 +939,6 @@ var DraggableCore = function (_React$Component) {
         } catch (e) {
           //
         }
-      } else {
-        (0, _domFns.addEvent)(ownerDocument, dragEventFor.stop, _this.handleDragStop);
       }
     }, _this.handleDrag = function (e) {
 
@@ -1034,8 +1032,6 @@ var DraggableCore = function (_React$Component) {
           } catch (e) {
             //
           }
-        } else {
-          (0, _domFns.removeEvent)(thisNode.ownerDocument, dragEventFor.stop, _this.handleDragStop);
         }
       }
     }, _this.onMouseDown = function (e) {
